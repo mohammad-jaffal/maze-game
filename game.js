@@ -1,11 +1,11 @@
 window.onload = function () {
 
 
-    const startBox = document.getElementById('start');
-    const endBox = document.getElementById('end');
-    const borders = document.getElementsByClassName('boundary');
-    const statusTitle = document.getElementById('status');
-    const restartBtn = document.getElementById('restartBtn');
+    var startBox = document.getElementById('start');
+    var endBox = document.getElementById('end');
+    var borders = document.getElementsByClassName('boundary');
+    var statusTitle = document.getElementById('status');
+    var restartBtn = document.getElementById('restartBtn');
 
 
     var firstTime = true;
@@ -13,6 +13,7 @@ window.onload = function () {
     var won = false;
     var score = 0;
 
+    
 
     // event listener for first time hover over s box
     startBox.addEventListener('mouseenter', function (event) {
@@ -21,6 +22,13 @@ window.onload = function () {
             startGame();
         }
     });
+
+    function colorBorder (color) {
+        for(var i = 0; i < 5; i++){
+            borders[i].style.backgroundColor = color;
+        }
+    }
+
 
 
     // restart the game after a win or a loss
@@ -39,13 +47,15 @@ window.onload = function () {
 
     // initializing the game for playing
     function startGame() {
+        colorBorder("#eeeeee");
 
         statusTitle.innerHTML = "Begin by moving your mouse over the \"S\"."
 
-        for (var i = 0; i < borders.length; i++) {
+        for (var i = 0; i < 5; i++) {
             // if the mouse touches the borders
             borders[i].addEventListener('mouseenter', function (event) {
                 if (!lost & !won) {
+                    colorBorder("red");
                     lost = true;
                     score -= 10;
                     statusTitle.innerHTML = `You lost \n score: ${score} `;
@@ -60,6 +70,7 @@ window.onload = function () {
 
             if (!lost & !won) {
                 won = true;
+                colorBorder("green");
                 score += 5;
                 statusTitle.innerHTML = `You won \n score: ${score} `;
                 console.log("won");
