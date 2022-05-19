@@ -5,6 +5,8 @@ window.onload = function () {
     const endBox = document.getElementById('end');
     const borders = document.getElementsByClassName('boundary');
     const statusTitle = document.getElementById('status');
+    const restartBtn = document.getElementById('restartBtn');
+
 
     var firstTime = true;
     var lost = false;
@@ -45,15 +47,15 @@ window.onload = function () {
     }
 
     function startGame() {
+        
+        statusTitle.innerHTML= "Begin by moving your mouse over the \"S\"."
         console.log("started");
         for (var i = 0; i < borders.length; i++) {
             borders[i].addEventListener('mouseenter', function (event) {
                 if (!lost & !won) {
                     lost = true;
                     score -= 10;
-                    if (score < 0) {
-                        score = 0;
-                    }
+                    
 
                     statusTitle.innerHTML = `You lost \n score: ${score} `;
                     console.log("lost");
@@ -80,6 +82,9 @@ window.onload = function () {
 
 
 
+    restartBtn.addEventListener('click', function onClick() {
+        location.reload();
+    });
 
 
 }
