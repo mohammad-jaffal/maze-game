@@ -13,12 +13,12 @@ window.onload = function () {
     var won = false;
     var score = 0;
 
-
+    statusTitle.innerHTML = "Begin by moving your mouse overrr the \"S\".<br/> &#160";
 
     // event listener for first time hover over s box
     startBox.addEventListener('mouseenter', function (event) {
         if (firstTime) {
-            statusTitle.innerHTML = "Game Started GL!";
+            statusTitle.innerHTML = "Game Started GL! <br/> &#160";
             firstTime = false;
             startGame();
         }
@@ -73,9 +73,6 @@ window.onload = function () {
 
 
     }
-
-
-
 
 
 
