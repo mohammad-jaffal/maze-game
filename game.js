@@ -13,6 +13,13 @@ window.onload = function () {
     var won = false;
     var score = 0;
 
+    // pre styling restart button
+    restartBtn.innerHTML = "Restart";
+    restartBtn.style.textAlign = "center";
+    restartBtn.style.cursor = "pointer";
+    
+
+    // adding an empty line under the title for score
     statusTitle.innerHTML = "Begin by moving your mouse overrr the \"S\".<br/> &#160";
 
     // event listener for first time hover over s box
