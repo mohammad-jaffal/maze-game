@@ -5,7 +5,7 @@ window.onload = function () {
     var endBox = document.getElementById('end');
     var borders = document.getElementsByClassName('boundary');
     var statusTitle = document.getElementById('status');
-    // var borders[5] = document.getElementById('borders[5]');
+    var gameBox = document.getElementById('game');
 
 
     var firstTime = true;
@@ -38,8 +38,8 @@ window.onload = function () {
             borders[i].style.backgroundColor = color;
         }
     }
-
-
+    
+   
 
     // initializing the game for playing
     function startGame() {
@@ -54,7 +54,6 @@ window.onload = function () {
                     lost = true;
                     score -= 10;
                     statusTitle.innerHTML = `You lost <br/> score: ${score} `;
-                    console.log("lost");
                     resetGame();
                 }
             });
@@ -68,15 +67,35 @@ window.onload = function () {
                 colorBorder("green");
                 score += 5;
                 statusTitle.innerHTML = `You won <br/> score: ${score} `;
-                console.log("won");
                 resetGame();
             }
         });
+
+
+        // when the mouse leaves the game box after start
+        gameBox.addEventListener('mouseleave',function(event){
+            if (!lost & !won) {
+                colorBorder("red");
+                lost = true;
+                score -= 10;
+                statusTitle.innerHTML = `You lost <br/> score: ${score} `;
+                resetGame();
+            }
+
+
+        });
+
+
+
 
         // button for restarting the game
         borders[5].addEventListener('click', function onClick() {
             location.reload();
         });
+
+
+
+
 
 
     }
