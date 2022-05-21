@@ -5,7 +5,7 @@ window.onload = function () {
     var endBox = document.getElementById('end');
     var borders = document.getElementsByClassName('boundary');
     var statusTitle = document.getElementById('status');
-    var restartBtn = document.getElementById('restartBtn');
+    // var borders[5] = document.getElementById('borders[5]');
 
 
     var firstTime = true;
@@ -14,13 +14,13 @@ window.onload = function () {
     var score = 0;
 
     // pre styling restart button
-    restartBtn.innerHTML = "Restart";
-    restartBtn.style.textAlign = "center";
-    restartBtn.style.cursor = "pointer";
+    borders[5].innerHTML = "Restart";
+    borders[5].style.textAlign = "center";
+    borders[5].style.cursor = "pointer";
     
 
     // adding an empty line under the title for score
-    statusTitle.innerHTML = "Begin by moving your mouse overrr the \"S\".<br/> &#160";
+    statusTitle.innerHTML = "Begin by moving your mouse over the \"S\".<br/> &#160";
 
     // event listener for first time hover over s box
     startBox.addEventListener('mouseenter', function (event) {
@@ -74,7 +74,7 @@ window.onload = function () {
         });
 
         // button for restarting the game
-        restartBtn.addEventListener('click', function onClick() {
+        borders[5].addEventListener('click', function onClick() {
             location.reload();
         });
 
