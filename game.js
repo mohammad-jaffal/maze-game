@@ -22,6 +22,7 @@ window.onload = function () {
     // adding an empty line under the title for score
     statusTitle.innerHTML = "Begin by moving your mouse over the \"S\".<br/> &#160";
 
+    
     // event listener for first time hover over s box
     startBox.addEventListener('mouseenter', function (event) {
         if (firstTime) {
@@ -39,53 +40,49 @@ window.onload = function () {
         }
     }
     
+    // function for when user lose 
+    var lostGame = function(event){
+        if (!lost & !won) {
+            colorBorder("red");
+            lost = true;
+            score -= 10;
+            statusTitle.innerHTML = `You lost <br/> score: ${score} `;
+            resetGame();
+        }
+    }
+
+
+    // function for when user wins 
+    var wonGame = function (event) {
+        if (!lost & !won) {
+            won = true;
+            colorBorder("green");
+            score += 5;
+            statusTitle.innerHTML = `You won <br/> score: ${score} `;
+            resetGame();
+        }
+    }
+
    
 
     // initializing the game for playing
     function startGame() {
+        // resetting boundaries color
         colorBorder("#eeeeee");
+
 
         // creating on hover for the borders
         for (var i = 0; i < 5; i++) {
             // if the mouse touches the borders
-            borders[i].addEventListener('mouseenter', function (event) {
-                if (!lost & !won) {
-                    colorBorder("red");
-                    lost = true;
-                    score -= 10;
-                    statusTitle.innerHTML = `You lost <br/> score: ${score} `;
-                    resetGame();
-                }
-            });
+            borders[i].addEventListener('mouseenter', lostGame);
         }
 
         // when the mouse reaches end without loss
-        endBox.addEventListener('mouseenter', function (event) {
-
-            if (!lost & !won) {
-                won = true;
-                colorBorder("green");
-                score += 5;
-                statusTitle.innerHTML = `You won <br/> score: ${score} `;
-                resetGame();
-            }
-        });
+        endBox.addEventListener('mouseenter', wonGame);
 
 
         // when the mouse leaves the game box after start
-        gameBox.addEventListener('mouseleave',function(event){
-            if (!lost & !won) {
-                colorBorder("red");
-                lost = true;
-                score -= 10;
-                statusTitle.innerHTML = `You lost <br/> score: ${score} `;
-                resetGame();
-            }
-
-
-        });
-
-
+        gameBox.addEventListener('mouseleave', lostGame);
 
 
         // button for restarting the game
@@ -93,18 +90,12 @@ window.onload = function () {
             location.reload();
         });
 
-
-
-
-
-
     }
 
 
 
     // reset the game after a win or a loss
     function resetGame() {
-
         startBox.addEventListener('click', function onClick() {
             if (lost || won) {
                 lost = false;
@@ -112,7 +103,6 @@ window.onload = function () {
                 startGame();
             }
         });
-
     }
 
 
