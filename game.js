@@ -15,7 +15,7 @@ window.onload = function () {
     var startTime;
     var interval
     var liveTimer;
-    var lastTimer;
+    var lastTimer = 0;
     var bestTimer;
 
     // pre styling restart button
@@ -77,12 +77,14 @@ window.onload = function () {
 
     function stop(){
         clearInterval(interval);
+        lastTimer = liveTimer;
     }
 
 
 
     // initializing the game for playing
     function startGame() {
+        document.getElementById("lastTime").innerHTML = (lastTimer / 1000).toFixed(1);
         startTime  = Date.now();
         interval = setInterval(function () {
             liveTimer = Date.now() - startTime;
