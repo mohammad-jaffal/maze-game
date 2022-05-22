@@ -121,6 +121,15 @@ neighboring elements.  Necessary to avoid giving ids to the boundary divs
 		text-align: center;
 }
 
+
+.time-stat{
+	background-color: rgb(251, 255, 0);
+	display: inline-block;
+	width: 30%;
+	font-size: 25px;
+	font-weight: bold;
+}
+
 .live {
 	background-color: red;
 	display: inline-block;
