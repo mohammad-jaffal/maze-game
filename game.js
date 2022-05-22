@@ -7,7 +7,7 @@ window.onload = function () {
     var statusTitle = document.getElementById('status');
     var gameBox = document.getElementById('game');
 
-
+    var bestTimerNull = true;
     var firstTime = true;
     var lost = false;
     var won = false;
@@ -62,9 +62,6 @@ window.onload = function () {
     var wonGame = function (event) {
         if (!lost & !won) {
             stop();
-            console.log(liveTimer)
-            // lastTimer = liveTimer;
-            // document.getElementById("liveTime").innerHTML = lastTimer;
             won = true;
             colorBorder("green");
             score += 5;
@@ -74,23 +71,22 @@ window.onload = function () {
     }
 
 
-
-    function stop(){
+    // function to stop the timer
+    function stop() {
         clearInterval(interval);
-        lastTimer = liveTimer;
+
     }
 
 
 
     // initializing the game for playing
     function startGame() {
-        document.getElementById("lastTime").innerHTML = (lastTimer / 1000).toFixed(1);
-        startTime  = Date.now();
+        startTime = Date.now();
         interval = setInterval(function () {
             liveTimer = Date.now() - startTime;
-            document.getElementById("liveTime").innerHTML = (liveTimer / 1000).toFixed(1);
+            document.getElementById("liveTime").innerHTML = `${(liveTimer / 1000).toFixed(1)} s`;
         }, 100);
-        
+
 
 
 
@@ -123,7 +119,27 @@ window.onload = function () {
 
     // reset the game after a win or a loss
     function resetGame() {
+
+        // when the user clicks on s-box
         startBox.addEventListener('click', function onClick() {
+            if (won) {
+                lastTimer = liveTimer;
+                document.getElementById("lastTime").innerHTML = `${(lastTimer / 1000).toFixed(1)} s`;
+
+                // if its first time the user plays
+                if (bestTimerNull) {
+                    bestTimer = lastTimer;
+                    bestTimerNull = false;
+                }
+                else {
+                    if (bestTimer > lastTimer) {
+                        bestTimer = lastTimer
+                    }
+                }
+                document.getElementById("bestTime").innerHTML = `${(bestTimer / 1000).toFixed(1)} s`;
+            }
+
+
             if (lost || won) {
                 lost = false;
                 won = false;
@@ -132,9 +148,9 @@ window.onload = function () {
         });
     }
 
-    
 
-    
+
+
 
 
 }
