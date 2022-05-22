@@ -54,6 +54,7 @@ window.onload = function () {
             score -= 10;
             statusTitle.innerHTML = `You lost <br/> score: ${score} `;
             resetGame();
+
         }
     }
 
@@ -74,13 +75,15 @@ window.onload = function () {
     // function to stop the timer
     function stop() {
         clearInterval(interval);
-
     }
 
 
 
     // initializing the game for playing
     function startGame() {
+        gameBox.style.cursor = "url('mario.png'), auto"
+        startBox.style.cursor = "url('mario.png'), auto"
+        endBox.style.cursor = "url('winner.png'), auto"
         startTime = Date.now();
         interval = setInterval(function () {
             liveTimer = Date.now() - startTime;
@@ -98,6 +101,8 @@ window.onload = function () {
         for (var i = 0; i < 5; i++) {
             // if the mouse touches the borders
             borders[i].addEventListener('mouseenter', lostGame);
+            borders[i].style.cursor = "url('def.png'), auto"
+            
         }
 
         // when the mouse reaches end without loss

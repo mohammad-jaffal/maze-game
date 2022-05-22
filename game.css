@@ -6,7 +6,10 @@ You don't need to download or edit this file.
 h1, h2 {
 	text-align: center;
 }
-
+.cursors {
+	display: flex;
+	flex-wrap: wrap;
+  }
 
 
 p {
@@ -19,8 +22,6 @@ p {
 	position: relative;
 	height: 300px;
 	width: 500px;
-	cursor: url("mario.png"), default;
-	background-color: grey;
 }
 
 #start, #end {
@@ -30,7 +31,6 @@ p {
 	width: 30px;
 	border: 1px solid black;
 	padding: 5px;
-	cursor: url("mario.png"), default;
 	
 	font-family: "Helvetica", "Arial", sans-serif;
 	font-size: 25pt;
