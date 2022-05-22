@@ -7,6 +7,8 @@ h1, h2 {
 	text-align: center;
 }
 
+
+
 p {
 	width: 600px;
 	margin: 1em auto;
@@ -17,6 +19,8 @@ p {
 	position: relative;
 	height: 300px;
 	width: 500px;
+	cursor: url("mario.png"), default;
+	background-color: grey;
 }
 
 #start, #end {
@@ -26,7 +30,7 @@ p {
 	width: 30px;
 	border: 1px solid black;
 	padding: 5px;
-	cursor: default;
+	cursor: url("mario.png"), default;
 	
 	font-family: "Helvetica", "Arial", sans-serif;
 	font-size: 25pt;
@@ -129,17 +133,8 @@ neighboring elements.  Necessary to avoid giving ids to the boundary divs
 	font-weight: bold;
 }
 
-.live {
+.stat {
 	display: inline-block;
 	width: 30%;
 }
 
-.last {
-	display: inline-block;
-	width: 30%;
-}
-
-.best {
-	display: inline-block;
-	width: 30%;
-}
